@@ -1,0 +1,6 @@
+*~
+.stack-work/
+dist-newstyle/
+build*/
+CMakeLists.txt.user*
+ext/web-ext-artifacts/

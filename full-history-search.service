@@ -1,0 +1,10 @@
+[Unit]
+Description=Full History Search
+
+[Service]
+ExecStart=/home/bradrn/full-history-search/startup/full-history-search-server
+WorkingDirectory=/home/bradrn/full-history-search/startup/
+
+[Install]
+Alias=full-history-search.service
+WantedBy=graphical.target

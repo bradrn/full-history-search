@@ -1,0 +1,57 @@
+cabal-version: 1.12
+
+name:           full-history-search
+version:        0.1.0.0
+synopsis:       Searches through a database of saved webpages
+description:    Please see the README on GitHub at <https://github.com/githubuser/full-history-search#readme>
+category:       Web
+homepage:       https://github.com/githubuser/full-history-search#readme
+bug-reports:    https://github.com/githubuser/full-history-search/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2022 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/bradrn/full-history-search
+
+library
+  exposed-modules:
+      Search.Insert
+    , Search.Search
+    , Search.Types
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5.0
+    , aeson >=1.5 && <2.2
+    , bytestring >=0.10 && <0.12
+    , sqlite-simple ==0.4.18.0
+    , text >=1.2 && <1.3
+  default-language: Haskell2010
+
+executable full-history-search-server
+  main-is: Main.hs
+  hs-source-dirs:
+      server
+  if os(windows)
+      ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2 -Wall -optl-mwindows
+  else
+      ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2 -Wall
+  build-depends:
+      base >=4.7 && <5.0
+    , full-history-search
+    , servant-server >=0.18 && <0.20
+    , sqlite-simple ==0.4.18.0
+    , wai >=3.2 && <3.3
+    , warp >=3.3 && <3.4
+    , text >=1.2 && <1.3
+    , time >=1.9 && <1.10
+  default-language: Haskell2010

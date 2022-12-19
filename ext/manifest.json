@@ -1,0 +1,30 @@
+{
+
+  "manifest_version": 2,
+  "name": "Full history search",
+  "version": "1.0",
+
+  "description": "Saves full text of all webpages visited for future search",
+
+  "icons": {
+    "48": "icon-48.png",
+    "96": "icon-96.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["gettext.js"]
+    }
+  ],
+
+  "permissions": [
+    "*://127.0.0.1/*"
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {
+        "id": "fulltext@example.com"
+    }
+  }
+}
